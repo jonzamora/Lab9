@@ -67,6 +67,84 @@
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
     // TODO - Make buttons functional
+
+    errorBtns[0].addEventListener('click', () => {
+      console.log("Console Log");
+    });
+
+    errorBtns[1].addEventListener('click', () => {
+      console.error("Console Error");
+    });
+
+    errorBtns[2].addEventListener('click', () => {
+      console.dir(errorBtns[2]);
+    });
+
+    errorBtns[3].addEventListener('click', () => {
+      console.dirxml(errorBtns[3]);
+    });
+
+    errorBtns[4].addEventListener('click', () => {
+      console.group();
+      console.info("Start");
+      console.info("Pause");
+      console.info("Finish");
+    });
+
+    errorBtns[5].addEventListener('click', () => {
+      console.info("Restart");
+      console.groupEnd();
+      console.info("Other");
+    });
+
+    errorBtns[6].addEventListener('click', () => {
+      console.table([
+        {subject: "CSE", number: 101},
+        {subject: "CSE", number: 110},
+        {subject: "CSE", number: 151},
+      ]);
+    });
+
+    errorBtns[7].addEventListener('click', () => {
+      console.time();
+    });
+
+    errorBtns[8].addEventListener('click', () => {
+      console.timeEnd();
+    });
+
+    errorBtns[9].addEventListener('click', () => {
+      function firstLevel() {
+        function secondLevel() {
+          function thirdLevel() {
+            console.trace();
+          }
+          thirdLevel();
+        }
+        secondLevel();
+      }
+      firstLevel();
+    });
+
+    class CustomError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "CustomError";
+      }
+    }
+    
+    function testError() {
+      throw new CustomError("[GLOBAL ERROR]: YOU HAVE ENCOUNTERED A GLOBAL ERROR");
+    }
+
+    window.onerror = (function (message) {
+      console.log("WINDOW ERROR: GLOBAL ERROR ENCOUNTERED");
+    });
+
+    errorBtns[10].addEventListener('click', () => {
+      testError();
+    });
+
   </script>
 </body>
 </html>
