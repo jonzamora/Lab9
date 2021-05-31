@@ -146,5 +146,15 @@
     });
 
   </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({
+      token: "e35d71114ca24e0296941a8b9b018409"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+
+    TrackJS.track('Testing TrackJS!');
+
+  </script>
 </body>
 </html>
